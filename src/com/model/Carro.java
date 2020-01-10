@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 
 
+
 public class Carro extends Veiculo{
 	//Atributos	
 	private String Marca;
@@ -41,9 +42,9 @@ public class Carro extends Veiculo{
 	}
 
 	//Metodos
-	public void Abastecer(int qtd,int Combustivel) {		
+	public void Abastecer(int qtd) {		
 		
-		while(qtd<15) {
+		while(Combustivel<15) {
 			int op;
 			System.out.println("Veiculo foi desligado");
 			Scanner sc = new Scanner (System.in);
@@ -54,57 +55,55 @@ public class Carro extends Veiculo{
 		{
 		    case 1:
 		    	
-		    	qtd = Combustivel + 10;
+		    	setCombustivel(Combustivel+ 10);
 					System.out.println("Abasteceu 10");
-					System.out.println("Total de litros no tanque: " + qtd);
+					System.out.println("Total de litros no tanque: " + getCombustivel());
 					
 		            break;
 		    
 		    case 2:
-		    	qtd = Combustivel + 20;
+		    	setCombustivel(Combustivel+ 20);
 		    	System.out.println("Abasteceu 20");
-		    	System.out.println("Total de litros no tanque: " + qtd);
+		    	System.out.println("Total de litros no tanque: " + getCombustivel());
 		            break;	    
 		    case 3:
-		    	qtd = Combustivel + 50;
+		    	setCombustivel(Combustivel+ 50);
 		    	System.out.println("Abasteceu 50");
-				System.out.println("Total de litros no tanque: " + qtd);
+				System.out.println("Total de litros no tanque: " + getCombustivel());
 		            break;	
 		    default:
 		           System.out.println("Opção invalida digite novamente");
 		}
-		
+		//Combustivel= Combustivel+ getCombustivel();
 		}
 	}
 	
 	
 
+
 	public void Acelerar() {
-		
-		
+
 		int op;
-		Scanner sc = new Scanner (System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Deseja Acelerar? Sim-1|Nao-2");
 		op = sc.nextInt();
-	
-	switch( op )
-	{
-	    case 1:
-	    	while(this.Velocidade < 240 ) {
-				this.Velocidade= Velocidade + 20;
-				Combustivel =  qtd - 1;
-				System.out.println("Sua velocidade é: " + this.Velocidade);
-				System.out.println("Quantidade de Combustivel: " + Combustivel );
-				} 
-	            break;
-	    
-	    case 2:
-	            System.out.println("Nao Acelera" );
-	            break;	    
-	    default:
-	           System.out.println("Opção invalida digite novamente");
-	}
-		
+
+		switch (op) {
+		case 1:
+			while (getVelocidade() < 240) {
+				setVelocidade(getVelocidade() + 20);
+				setCombustivel(getCombustivel() - 1);
+				System.out.println("Sua velocidade é: " + getVelocidade());
+				System.out.println("Quantidade de Combustivel: " + getCombustivel()+"\n");
+			}
+			break;
+
+		case 2:
+			System.out.println("Nao Acelera");
+			break;
+		default:
+			System.out.println("Opção invalida digite novamente");
+		}
 
 	}
 }
